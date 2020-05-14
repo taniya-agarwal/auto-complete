@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>SpatialKey Skills Exercise</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <section class="conatiner">
+        <div id="addressContainer">
+            <input type="text" value="" id="addressField" placeholder="Type atleast three chaaracters" />
+            <ul id="addressList" class="addressList"></ul>
+        </div>
+        <div class="map-container">
+            <div id="map"></div>
+            <ul id="riskList" class="riskList hideClass"></ul>
+        </div>
+    </section>
+    
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
