@@ -10,7 +10,7 @@ const AddressData = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [30.3074624,-98.0336045]
+            "coordinates": [30.3074624, -98.0336045]
         },
         "type": "Feature"
     },
@@ -35,7 +35,7 @@ const AddressData = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [47.6423318,-122.1391189]
+            "coordinates": [47.6423318, -122.1391189]
         },
         "type": "Feature"
     }, {
@@ -47,7 +47,7 @@ const AddressData = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.5168049,-0.136269]
+            "coordinates": [51.5168049, -0.136269]
         },
         "type": "Feature"
     }, {
@@ -59,7 +59,7 @@ const AddressData = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [1.2541673,103.8186673]
+            "coordinates": [1.2541673, 103.8186673]
         },
         "type": "Feature"
     }, {
@@ -71,7 +71,7 @@ const AddressData = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [22.3129666,114.0390932]
+            "coordinates": [22.3129666, 114.0390932]
         },
         "type": "Feature"
     }, {
@@ -83,7 +83,7 @@ const AddressData = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [4.2003913,73.4105158]
+            "coordinates": [4.2003913, 73.4105158]
         },
         "type": "Feature"
     }, {
@@ -95,29 +95,8 @@ const AddressData = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [12.9262746,100.8707591]
+            "coordinates": [12.9262746, 100.8707591]
         },
         "type": "Feature"
     },
 ];
-
-// Sample data for risk label
-const RiskData = [
-    {
-        sk_risk_fema: 'Minimal Risk'
-    }, {
-        sk_risk_fema: 'Minimal Risk',
-        sk_risk_katrisk: 'High Risk',
-        sk_risk_healthrisk: 'Medium Risk'
-    }, {
-        sk_risk_healthrisk: 'Medium Risk',
-        sk_risk_katrisk: 'High Risk'
-    }, {
-        sk_risk_fema: 'Minimal Risk',
-        sk_risk_healthrisk: 'Medium Risk',
-    }, {
-        sk_risk_healthrisk: 'Medium Risk'
-    }, {
-        sk_risk_katrisk: 'High Risk'
-    }
-]

@@ -1,5 +1,13 @@
-(function (AddressData, RiskData) {
-  let map;
+/**
+ * we need to have one inout box
+ * one Ul li to render list
+ * on key up we will ad event listner
+ * we will use debounce to improve perf if user type fast
+ * after key up we will make a call to get the data
+ * render the data in li
+ */
+
+(function (AddressData) {
   const addressField = document.getElementById("addressField");
   const addressList = document.getElementById("addressList");
 
@@ -62,41 +70,10 @@
       });
   }
 
-  // click handler of list of addresses
-  function addressSelected(e) {
-    const target = e.target;
-    // check if it is a list tag
-    if (target.classList.contains("addresslist-item")) {
-      const latLon = target.getAttribute("data-geo");
-      if (latLon) {
-        // Api call to get the risk label
-        geocodeRisk(latLon)
-          .then((data) => {
-            if (data) {
-              renderRiskLabel(data);
-            }
-          })
-          .catch((error) => {
-            console.log("error occured");
-          });
-      }
-      plotMarker(latLon);
-      addressField.value = target.innerText;
-      addressList.classList.add("hideClass");
-    }
-  }
-
   // mock Asyn data  function
   // act like an http call
   async function geocodeAddress(inputStr) {
     const data = await getAddressResponse(inputStr);
-    return data;
-  }
-
-  // mock Asyn data function
-  // act like an http call
-  async function geocodeRisk(latLon) {
-    const data = await getRiskLabelResponse(latLon);
     return data;
   }
 
@@ -112,15 +89,6 @@
     return [];
   }
 
-  // get mock random risk data
-  function getRiskLabelResponse(latLon) {
-    const dataLength = RiskData.length;
-    if (dataLength > 0) {
-      const randomvalue = getRandomNo(0, dataLength - 1);
-      return RiskData[randomvalue];
-    }
-    return null;
-  }
 
   // Render the listor autocomplete
   function renderResult(data) {
@@ -144,51 +112,4 @@
     }
   }
 
-  // Render list of risk label
-  function renderRiskLabel(data) {
-    const riskList = document.getElementById("riskList");
-    riskList.innerHTML = "";
-    if (riskList) {
-      for (key in data) {
-        const li = document.createElement("li");
-        // Setting key, which may be used in future.
-        li.setAttribute("data-key", key);
-        li.className = "risklabel-item";
-        li.innerText = key + "-" + data[key];
-        riskList.appendChild(li);
-      }
-    }
-
-    // show the list
-    riskList.classList.remove("hideClass");
-  }
-
-  // Plot the marker at selected position.
-  function plotMarker(latLong) {
-    if (latLong) {
-      if (!map) {
-        initalizeMap();
-      }
-      try {
-        const parsedData = JSON.parse(latLong);
-        L.marker(parsedData).addTo(map);
-        map.setView(parsedData, 16);
-      } catch (err) {
-        console.log("error occured", err);
-      }
-    }
-  }
-
-  // initialize the map
-  function initalizeMap() {
-    // dummy lat long to initialize map
-    map = L.map("map").setView([0, 0], 1);
-
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
-  }
-
-  initalizeMap();
-})(AddressData, RiskData);
+})(AddressData);
